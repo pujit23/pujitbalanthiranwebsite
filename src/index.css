@@ -2,23 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    @apply border-navy-light;
-  }
-  
-  body {
-    @apply bg-navy text-white antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+:root {
+  --bg: #0D1B2A;
+  --bg-2: #112236;
+  --surface: #162B3E;
+  --surface-2: #1C3450;
+  --border: #1E3A52;
+  --border-hover: #C9A96E;
+  --text-primary: #F5ECD7;
+  --text-secondary: #8BA5B8;
+  --text-tertiary: #3D5A73;
+  --sand: #C9A96E;
+  --sand-light: #E8D5A3;
+  --sand-dim: rgba(201,169,110,0.08);
+  --sand-glow: rgba(201,169,110,0.2);
+  --coral: #E8735A;
+  --pearl: #F0EBE1;
+  --ocean-deep: #061421;
+  --sky: #4A9EBF;
+  --sky-dim: rgba(74,158,191,0.08);
+  --foam: rgba(240,235,225,0.06);
+  --shell-pink: #E8C4B8;
+  --shell-dim: rgba(232,196,184,0.08);
+  --coral-bright: #FF6B47;
+  --coral-soft: #D4856A;
+  --sea-foam: #A8D5C2;
+  --sea-foam-dim: rgba(168,213,194,0.08);
+  --deep-teal: #2A6B7C;
+  --pearl-pink: #F2DDD6;
+  --driftwood: #8B7355;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+* { 
+  box-sizing: border-box; 
+}
+
+body {
+  background: 
+    radial-gradient(ellipse 120% 50% at 50% -5%, rgba(74,158,191,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(201,169,110,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 0% 60%, rgba(232,196,184,0.05) 0%, transparent 50%),
+    #0D1B2A;
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+::selection { 
+  background: rgba(201,169,110,0.3); 
+  color: #F5ECD7; 
+}
+
+.site-wrapper { 
+  opacity: 0; 
+  transition: opacity 0.6s ease; 
+}
+
+.site-wrapper.visible { 
+  opacity: 1; 
+}
+
+/* Scroll reveal classes */
+.reveal-base {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealed {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(232,196,184,0.5); }
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes pulseColor {
+  0%, 100% { background: #C9A96E; }
+  50% { background: #E8C4B8; }
+}
+
+@keyframes smokeDrift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  100% { transform: translate(30px, -20px) scale(1.08); opacity: 1; }
+}
+@keyframes rayPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

@@ -6,26 +6,32 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        navy: {
-          DEFAULT: '#0a0e27',
-          light: '#151932',
-          dark: '#050812',
-        },
-        orange: {
-          DEFAULT: '#ff6b35',
-          light: '#ff8c5a',
-          dark: '#e55a2b',
-        },
-        pink: {
-          DEFAULT: '#ff6b9d',
-          light: '#ff8db8',
-          dark: '#e55a8a',
-        },
-      },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['DM Sans', 'sans-serif'],
+        serif: ['DM Serif Display', 'serif'],
+        display: ["'Space Grotesk'", 'sans-serif'],
       },
+      colors: {
+        bg: '#0D1B2A',
+        surface: '#162B3E',
+        border: '#1E3A52',
+        sand: '#C9A96E',
+        'sand-light': '#E8D5A3',
+        coral: '#E8735A',
+        pearl: '#F0EBE1',
+        sky: '#4A9EBF',
+        ocean: '#061421',
+        primary: '#F5ECD7',
+        secondary: '#8BA5B8',
+        tertiary: '#3D5A73',
+        'shell-pink': '#E8C4B8',
+        'coral-bright': '#FF6B47',
+        'coral-soft': '#D4856A',
+        'sea-foam': '#A8D5C2',
+        'deep-teal': '#2A6B7C',
+        'pearl-pink': '#F2DDD6',
+        'driftwood': '#8B7355',
+      }
     },
   },
   plugins: [],
