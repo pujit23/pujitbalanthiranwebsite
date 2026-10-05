@@ -2,19 +2,37 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{
-      padding: '32px 80px',
-      borderTop: '4px solid var(--border)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      background: 'var(--card)',
-      color: 'var(--card-foreground)',
-    }}>
-      <span className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted-foreground)' }}>
-        Plan hard. Build harder.
-      </span>
-      <span className="font-display" style={{ fontSize: '1.5rem', fontWeight: 400, color: 'var(--primary)' }}>P23</span>
+    <footer
+      style={{
+        padding: '36px clamp(20px, 6vw, 80px)',
+        borderTop: '1px solid rgba(242, 241, 236, 0.08)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: '#0a0f1f',
+        color: '#9aa3b8',
+      }}
+    >
+      <a
+        href="https://github.com/pujit23"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 18,
+          fontWeight: 700,
+          fontVariantNumeric: 'lining-nums',
+          fontFeatureSettings: '"lnum" 1',
+          letterSpacing: '-0.02em',
+          color: '#f2f1ec',
+          textDecoration: 'none',
+          transition: 'color 0.2s ease',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.color = '#ff6a2b'; }}
+        onMouseLeave={e => { e.currentTarget.style.color = '#f2f1ec'; }}
+      >
+        P23
+      </a>
     </footer>
   );
 };

@@ -13,54 +13,93 @@ const Hackathons = () => {
   useScrollReveal(sectionRef);
 
   return (
-    <section id="hackathons" ref={sectionRef}
-      style={{ padding: '100px 80px', borderBottom: '4px solid var(--border)', background: 'var(--background)' }}>
-      <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--primary)' }} />
-        004 — Hackathons & Competitions
-      </div>
-      <h2 className="font-display" style={{ fontSize: 'var(--text-heading-sm)', fontWeight: 400, lineHeight: 1.05, color: 'var(--foreground)', marginBottom: '3.5rem', textTransform: 'uppercase' }}>
-        Built under pressure.
-      </h2>
+    <section
+      id="hackathons"
+      ref={sectionRef}
+      style={{
+        padding: '100px clamp(20px, 6vw, 80px)',
+        background: '#0a0f1f',
+        position: 'relative',
+      }}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Eyebrow */}
+        <div style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 10, fontWeight: 500 }}>
+          <span style={{ display: 'inline-block', width: 20, height: 1, background: '#ff6a2b' }} />
+          004 — Hackathons &amp; Sprints
+        </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-        {hackathonsData.map((h, i) => (
-          <div
-            key={h.name}
-            className="retro-press"
-            style={{
-              background: 'var(--card)',
-              color: 'var(--card-foreground)',
-              padding: '36px 40px',
-              border: '4px solid var(--border)',
-              boxShadow: '6px 6px 0 0 var(--shadow-color)',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-              <div className="font-body" style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--foreground)' }}>{h.name}</div>
-              <span
-                className="font-pixel"
-                style={{
-                  fontSize: 8,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  border: '2px solid var(--border)',
-                  background: i === 0 ? 'var(--primary)' : 'var(--accent)',
-                  color: i === 0 ? 'var(--primary-foreground)' : 'var(--accent-foreground)',
-                  padding: '3px 8px',
-                  fontWeight: 900,
-                  boxShadow: '2px 2px 0 0 var(--shadow-color)',
-                  whiteSpace: 'nowrap',
-                  marginLeft: 12,
-                }}
-              >
-                {h.badge}
-              </span>
+        <h2
+          className="font-serif"
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 400,
+            lineHeight: 1.15,
+            color: '#f2f1ec',
+            marginBottom: '3.5rem',
+          }}
+        >
+          Built under pressure.
+        </h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+          {hackathonsData.map((h, i) => (
+            <div
+              key={h.name}
+              style={{
+                background: '#0d1428',
+                padding: '32px 28px',
+                borderRadius: 14,
+                border: '1px solid rgba(242, 241, 236, 0.08)',
+                transition: 'all 0.25s ease',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.38)';
+                e.currentTarget.style.boxShadow = '0 0 28px rgba(255, 106, 43, 0.12)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.08)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                  <div className="font-serif" style={{ fontSize: '1.25rem', fontWeight: 400, color: '#f2f1ec' }}>
+                    {h.name}
+                  </div>
+                  <span
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      border: i === 0 ? '1px solid rgba(255, 106, 43, 0.4)' : '1px solid rgba(242, 241, 236, 0.1)',
+                      background: i === 0 ? 'rgba(255, 106, 43, 0.12)' : 'rgba(10, 15, 31, 0.6)',
+                      color: i === 0 ? '#ff6a2b' : '#9aa3b8',
+                      padding: '3px 9px',
+                      borderRadius: 9999,
+                      fontWeight: 600,
+                      whiteSpace: 'nowrap',
+                      marginLeft: 12,
+                    }}
+                  >
+                    {h.badge}
+                  </span>
+                </div>
+                <div style={{ fontSize: 12, color: '#ff6a2b', letterSpacing: '0.04em', marginBottom: 16, fontWeight: 500 }}>
+                  {h.organizer}
+                </div>
+              </div>
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#9aa3b8', fontWeight: 300 }}>
+                {h.description}
+              </p>
             </div>
-            <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: 14, fontWeight: 700 }}>{h.organizer}</div>
-            <p className="font-body" style={{ fontSize: '0.92rem', lineHeight: 1.75, color: 'var(--foreground)' }}>{h.description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

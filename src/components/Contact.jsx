@@ -11,77 +11,127 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" ref={sectionRef}
+    <section
+      id="contact"
+      ref={sectionRef}
       style={{
-        padding: '100px 80px',
-        background: 'var(--secondary)',
-        color: 'var(--secondary-foreground)',
+        padding: '100px clamp(20px, 6vw, 80px)',
+        background: '#0a0f1f',
         position: 'relative',
-        overflow: 'hidden',
-        borderBottom: '4px solid var(--border)',
-      }}>
-      <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--accent)' }} />
-        006 — Contact
-      </div>
-
-      <h2 className="font-display" style={{ fontSize: 'var(--text-heading)', fontWeight: 400, lineHeight: 'var(--leading-tight)', color: 'var(--secondary-foreground)', marginBottom: '2.5rem', textTransform: 'uppercase' }}>
-        Let's build<br />something.
-      </h2>
-
-      <p className="font-body" style={{ fontSize: 'var(--text-body)', lineHeight: 'var(--leading-body)', color: 'var(--secondary-foreground)', maxWidth: 520, marginBottom: '3.5rem', opacity: 0.95 }}>
-        Currently looking for software engineering internships and collaborative opportunities.
-        Whether you have a question or just want to say hi, I'll try my best to get back to you.
-      </p>
-
-      <a href="mailto:pujitbalanthiran23@gmail.com"
-        className="retro-press"
+      }}
+    >
+      <div
+        className="max-w-4xl mx-auto"
         style={{
-          fontFamily: 'var(--font-space-grotesk)',
-          fontSize: 'clamp(1.1rem, 2.2vw, 1.8rem)',
-          fontWeight: 900,
-          color: 'var(--accent-foreground)',
-          background: 'var(--accent)',
-          border: '4px solid var(--border)',
-          boxShadow: '6px 6px 0 0 var(--shadow-color)',
-          textDecoration: 'none',
-          padding: '14px 28px',
-          display: 'inline-block',
-          marginBottom: '3.5rem',
-        }}>
-        pujitbalanthiran23@gmail.com
-      </a>
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}
+      >
+        {/* Eyebrow */}
+        <div style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, fontWeight: 500 }}>
+          <span style={{ display: 'inline-block', width: 20, height: 1, background: '#ff6a2b' }} />
+          006 — Contact
+          <span style={{ display: 'inline-block', width: 20, height: 1, background: '#ff6a2b' }} />
+        </div>
 
-      <div style={{ display: 'flex', gap: 20 }}>
-        {socials.map(s => (
-          <a key={s.name} href={s.url} target="_blank" rel="noreferrer"
-            className="retro-press"
+        <h2
+          className="font-serif"
+          style={{
+            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+            fontWeight: 400,
+            lineHeight: 1.1,
+            color: '#f2f1ec',
+            marginBottom: '2rem',
+            textAlign: 'center',
+          }}
+        >
+          Let's build<br />something.
+        </h2>
+
+        <p
+          style={{
+            fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
+            lineHeight: 1.75,
+            color: '#9aa3b8',
+            maxWidth: 580,
+            marginBottom: '3rem',
+            fontWeight: 300,
+            textAlign: 'center',
+          }}
+        >
+          Currently looking for software engineering internships and collaborative opportunities.
+          Whether you have a question or just want to say hi, I'll try my best to get back to you.
+        </p>
+
+        {/* Email Pill Button */}
+        <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <a
+            href="mailto:pujitbalanthiran23@gmail.com"
             style={{
-              fontFamily: 'var(--font-space-grotesk)',
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'var(--card-foreground)',
-              background: 'var(--card)',
+              fontSize: 'clamp(1rem, 2vw, 1.4rem)',
+              fontWeight: 500,
+              color: '#f2f1ec',
+              background: '#0d1428',
+              border: '1px solid rgba(242, 241, 236, 0.12)',
+              borderRadius: 12,
+              padding: '16px 32px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 12,
               textDecoration: 'none',
-              border: '3px solid var(--border)',
-              boxShadow: '4px 4px 0 0 var(--shadow-color)',
-              padding: '12px 24px',
-              display: 'inline-block',
-            }}>
-            {s.name}
+              transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.4)';
+              e.currentTarget.style.boxShadow = '0 0 28px rgba(255, 106, 43, 0.14)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.12)';
+              e.currentTarget.style.boxShadow = 'none';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <span>pujitbalanthiran23@gmail.com</span>
+            <span style={{ color: '#ff6a2b' }}>&rarr;</span>
           </a>
-        ))}
-      </div>
+        </div>
 
-      {/* Large P23 watermark */}
-      <div className="font-display" style={{
-        position: 'absolute', right: -20, bottom: -40,
-        fontSize: '22vw', fontWeight: 400,
-        color: 'var(--accent)', opacity: 0.08, lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
-      }}>
-        P23
+        {/* Social Links */}
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          {socials.map(s => (
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                fontSize: 13,
+                fontWeight: 500,
+                letterSpacing: '0.04em',
+                color: '#9aa3b8',
+                background: '#0d1428',
+                border: '1px solid rgba(242, 241, 236, 0.08)',
+                borderRadius: 8,
+                padding: '8px 18px',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = '#f2f1ec';
+                e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.35)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = '#9aa3b8';
+                e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.08)';
+              }}
+            >
+              {s.name}
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

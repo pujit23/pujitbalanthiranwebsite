@@ -7,10 +7,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'sans-serif'],
-        display: ['Bungee', 'cursive'],
-        pixel: ['"Press Start 2P"', 'monospace'],
-        mono: ['Space Grotesk', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        pixel: ['Inter', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['"Space Grotesk"', 'monospace'],
       },
       colors: {
         background: 'var(--background)',
@@ -33,6 +35,18 @@ export default {
         input: 'var(--input)',
         ring: 'var(--ring)',
         shadow: 'var(--shadow-color)',
+        navy: {
+          DEFAULT: '#0a0f1f',
+          alt: '#0d1428',
+          card: '#0d1428',
+          dark: '#060913',
+          light: '#131b33',
+        },
+        orange: {
+          DEFAULT: '#ff6a2b',
+          soft: 'rgba(255, 106, 43, 0.12)',
+          border: 'rgba(255, 106, 43, 0.38)',
+        },
       }
     },
   },

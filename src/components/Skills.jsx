@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const Skills = () => {
@@ -16,124 +16,110 @@ const Skills = () => {
     { num: "05", title: "CS Core", skills: ["OOP","Data Structures & Algorithms","Cryptography","Problem Solving","DBMS","Software Engineering"] },
   ];
 
-  const also = ["Tailwind CSS","Vite","Mongoose","JWT","bcryptjs","Multer","Framer Motion","Recharts","D3.js","Leaflet.js","Google Cloud Run","React Router","Lucide React","Figma","Neo4j","Vanilla CSS"];
-
-  const [alsoVisible, setAlsoVisible] = useState(false);
-  const alsoRef = useRef(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setAlsoVisible(true); }, { threshold: 0.1 });
-    if (alsoRef.current) obs.observe(alsoRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  const Tag = ({ label, index }) => (
-    <span
-      className="retro-press"
+  return (
+    <section
+      id="skills"
+      ref={sectionRef}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        border: '2px solid var(--border)',
-        background: index % 2 === 0 ? 'var(--primary)' : 'var(--accent)',
-        color: index % 2 === 0 ? 'var(--primary-foreground)' : 'var(--accent-foreground)',
-        boxShadow: '3px 3px 0 0 var(--shadow-color)',
-        padding: '4px 10px',
-        fontSize: '0.75rem',
-        fontWeight: 900,
-        textTransform: 'uppercase',
-        fontFamily: 'var(--font-space-grotesk)',
-        cursor: 'default',
+        padding: '100px clamp(20px, 6vw, 80px)',
+        background: '#0a0f1f',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {label}
-    </span>
-  );
-
-  return (
-    <section id="skills" ref={sectionRef}
-      style={{ padding: '100px 80px', borderBottom: '4px solid var(--border)', background: 'var(--background)', overflow: 'hidden' }}>
-      <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--primary)' }} />
-        002 — Skills
-      </div>
-      <h2 className="font-display" style={{ fontSize: 'var(--text-heading-sm)', fontWeight: 400, lineHeight: 1.05, color: 'var(--foreground)', marginBottom: '4rem', textTransform: 'uppercase' }}>
-        What I work with.
-      </h2>
-
-      {/* Ticker rows */}
-      <div style={{ marginBottom: '4rem', overflow: 'hidden' }}>
-        <div style={{ borderTop: '3px solid var(--border)', borderBottom: '3px solid var(--border)', padding: '14px 0', overflow: 'hidden', position: 'relative', background: 'var(--card)' }}>
-          <div style={{ display: 'inline-flex', animation: 'tickerLeft 36s linear infinite', whiteSpace: 'nowrap' }}>
-            {[...ticker1, ...ticker1].map((s, i) => (
-              <span key={i} className="font-pixel" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--foreground)', margin: '0 24px' }}>
-                {s} <span style={{ color: 'var(--primary)', marginLeft: 12, marginRight: 12 }}>★</span>
-              </span>
-            ))}
-          </div>
+      <div className="max-w-6xl mx-auto">
+        {/* Eyebrow */}
+        <div style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 10, fontWeight: 500 }}>
+          <span style={{ display: 'inline-block', width: 20, height: 1, background: '#ff6a2b' }} />
+          002 — Skills
         </div>
-        <div style={{ borderBottom: '3px solid var(--border)', padding: '14px 0', overflow: 'hidden', position: 'relative', background: 'var(--card)' }}>
-          <div style={{ display: 'inline-flex', animation: 'tickerRight 30s linear infinite', whiteSpace: 'nowrap' }}>
-            {[...ticker2, ...ticker2].map((s, i) => (
-              <span key={i} className="font-pixel" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--foreground)', margin: '0 24px' }}>
-                {s} <span style={{ color: 'var(--accent)', marginLeft: 12, marginRight: 12 }}>★</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Skill cards grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-        {skillCards.map((card, idx) => (
-          <div
-            key={card.num}
-            className="retro-press"
-            style={{
-              background: 'var(--card)',
-              color: 'var(--card-foreground)',
-              padding: '40px 36px',
-              border: '4px solid var(--border)',
-              boxShadow: '6px 6px 0 0 var(--shadow-color)',
-              gridColumn: idx === 4 ? 'span 2' : 'auto',
-            }}
-          >
-            <div className="font-pixel" style={{ fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', marginBottom: 16, fontWeight: 700 }}>{card.num}</div>
-            <h3 className="font-display" style={{ fontSize: '1.6rem', fontWeight: 400, color: 'var(--foreground)', marginBottom: 20, textTransform: 'uppercase' }}>{card.title}</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-              {card.skills.map((skill, sIdx) => <Tag key={skill} label={skill} index={sIdx} />)}
+        <h2
+          className="font-serif"
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 400,
+            lineHeight: 1.15,
+            color: '#f2f1ec',
+            marginBottom: '3rem',
+          }}
+        >
+          What I work with.
+        </h2>
+
+        {/* Ticker rows */}
+        <div style={{ marginBottom: '3.5rem', overflow: 'hidden', borderRadius: 12, border: '1px solid rgba(242, 241, 236, 0.08)' }}>
+          <div style={{ padding: '12px 0', overflow: 'hidden', position: 'relative', background: '#0d1428', borderBottom: '1px solid rgba(242, 241, 236, 0.06)' }}>
+            <div style={{ display: 'inline-flex', animation: 'tickerLeft 40s linear infinite', whiteSpace: 'nowrap' }}>
+              {[...ticker1, ...ticker1].map((s, i) => (
+                <span key={i} style={{ fontSize: 13, letterSpacing: '0.04em', color: '#9aa3b8', margin: '0 20px', display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span>{s}</span>
+                  <span style={{ color: '#ff6a2b', fontSize: 10, opacity: 0.8 }}>✦</span>
+                </span>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Also worked with */}
-      <div style={{ marginTop: '4rem' }}>
-        <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--muted-foreground)', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ display: 'inline-block', width: 20, height: 3, background: 'var(--muted-foreground)' }} />
-          Also worked with
+          <div style={{ padding: '12px 0', overflow: 'hidden', position: 'relative', background: '#0d1428' }}>
+            <div style={{ display: 'inline-flex', animation: 'tickerRight 36s linear infinite', whiteSpace: 'nowrap' }}>
+              {[...ticker2, ...ticker2].map((s, i) => (
+                <span key={i} style={{ fontSize: 13, letterSpacing: '0.04em', color: '#9aa3b8', margin: '0 20px', display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span>{s}</span>
+                  <span style={{ color: '#ff6a2b', fontSize: 10, opacity: 0.8 }}>✦</span>
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div ref={alsoRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-          {also.map((skill, idx) => (
-            <span
-              key={skill}
-              className="retro-press"
+
+        {/* Skill cards grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+          {skillCards.map((card, idx) => (
+            <div
+              key={card.num}
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                border: '2px solid var(--border)',
-                background: 'var(--card)',
-                color: 'var(--card-foreground)',
-                boxShadow: '3px 3px 0 0 var(--shadow-color)',
-                padding: '4px 10px',
-                fontSize: '0.75rem',
-                fontWeight: 900,
-                textTransform: 'uppercase',
-                fontFamily: 'var(--font-space-grotesk)',
-                opacity: 0,
-                animation: alsoVisible ? `fadeIn 0.5s ease forwards ${idx * 0.04}s` : 'none',
+                background: '#0d1428',
+                padding: '32px 28px',
+                borderRadius: 14,
+                border: '1px solid rgba(242, 241, 236, 0.08)',
+                transition: 'all 0.25s ease',
+                gridColumn: idx === 4 ? 'span 1' : 'auto',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.38)';
+                e.currentTarget.style.boxShadow = '0 0 28px rgba(255, 106, 43, 0.12)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.08)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              {skill}
-            </span>
+              <div style={{ fontSize: 11, color: '#ff6a2b', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 500 }}>
+                {card.num}
+              </div>
+              <h3 className="font-serif" style={{ fontSize: '1.35rem', fontWeight: 400, color: '#f2f1ec', marginBottom: 20 }}>
+                {card.title}
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {card.skills.map(s => (
+                  <span
+                    key={s}
+                    style={{
+                      background: 'rgba(10, 15, 31, 0.8)',
+                      border: '1px solid rgba(242, 241, 236, 0.08)',
+                      color: '#9aa3b8',
+                      fontSize: 12,
+                      padding: '4px 12px',
+                      borderRadius: 9999,
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

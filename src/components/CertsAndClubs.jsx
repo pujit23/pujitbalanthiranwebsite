@@ -23,97 +23,131 @@ const CertsAndClubs = () => {
   useScrollReveal(sectionRef);
 
   return (
-    <section id="credentials" ref={sectionRef}
-      style={{ padding: '100px 80px', borderBottom: '4px solid var(--border)', background: 'var(--background)' }}>
-      <div className="font-pixel" style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: 32, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ display: 'inline-block', width: 24, height: 3, background: 'var(--primary)' }} />
-        005 — Credentials
-      </div>
-      <h2 className="font-display" style={{ fontSize: 'var(--text-heading-sm)', fontWeight: 400, lineHeight: 1.05, color: 'var(--foreground)', marginBottom: '4rem', textTransform: 'uppercase' }}>
-        Beyond the code.
-      </h2>
+    <section
+      id="credentials"
+      ref={sectionRef}
+      style={{
+        padding: '100px clamp(20px, 6vw, 80px)',
+        background: '#0a0f1f',
+        position: 'relative',
+      }}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Eyebrow */}
+        <div style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 10, fontWeight: 500 }}>
+          <span style={{ display: 'inline-block', width: 20, height: 1, background: '#ff6a2b' }} />
+          005 — Credentials &amp; Leadership
+        </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
-        {/* Certifications Card */}
-        <div
-          className="retro-press"
+        <h2
+          className="font-serif"
           style={{
-            background: 'var(--card)',
-            color: 'var(--card-foreground)',
-            padding: '32px 36px',
-            border: '4px solid var(--border)',
-            boxShadow: '6px 6px 0 0 var(--shadow-color)',
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 400,
+            lineHeight: 1.15,
+            color: '#f2f1ec',
+            marginBottom: '3.5rem',
           }}
         >
-          <div className="font-pixel" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: 24, fontWeight: 700 }}>Certifications</div>
-          {certs.map((c, i) => (
-            <div key={c.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '16px 0', borderBottom: i === certs.length - 1 ? 'none' : '3px solid var(--border)' }}>
-              <div style={{ paddingRight: 16 }}>
-                <div className="font-body" style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--foreground)' }}>{c.name}</div>
-                <div className="font-pixel" style={{ fontSize: 8, color: 'var(--primary)', letterSpacing: '0.1em', marginTop: 4, fontWeight: 700 }}>{c.issuer}</div>
+          Beyond the code.
+        </h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
+          {/* Certifications Card */}
+          <div
+            style={{
+              background: '#0d1428',
+              padding: 'clamp(28px, 4vw, 36px)',
+              borderRadius: 16,
+              border: '1px solid rgba(242, 241, 236, 0.08)',
+              transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.38)';
+              e.currentTarget.style.boxShadow = '0 0 28px rgba(255, 106, 43, 0.12)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.08)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <div style={{ fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 20, fontWeight: 600 }}>
+              Certifications
+            </div>
+            {certs.map((c, i) => (
+              <div
+                key={c.name}
+                style={{
+                  padding: '14px 0',
+                  borderBottom: i === certs.length - 1 ? 'none' : '1px solid rgba(242, 241, 236, 0.06)',
+                }}
+              >
+                <div style={{ fontSize: '0.98rem', fontWeight: 500, color: '#f2f1ec' }}>{c.name}</div>
+                <div style={{ fontSize: 12, color: '#ff6a2b', letterSpacing: '0.04em', marginTop: 4, fontWeight: 400 }}>{c.issuer}</div>
                 {c.description && (
-                  <p className="font-body" style={{ fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--foreground)', marginTop: 8, opacity: 0.9 }}>
+                  <p style={{ fontSize: '0.86rem', lineHeight: 1.6, color: '#9aa3b8', marginTop: 6, fontWeight: 300 }}>
                     {c.description}
                   </p>
                 )}
               </div>
-              <span
-                className="font-pixel"
-                style={{
-                  fontSize: 8,
-                  border: '2px solid var(--border)',
-                  background: 'var(--primary)',
-                  color: 'var(--primary-foreground)',
-                  padding: '3px 8px',
-                  boxShadow: '2px 2px 0 0 var(--shadow-color)',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {c.issuer}
-              </span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Clubs Card */}
-        <div
-          className="retro-press"
-          style={{
-            background: 'var(--card)',
-            color: 'var(--card-foreground)',
-            padding: '32px 36px',
-            border: '4px solid var(--border)',
-            boxShadow: '6px 6px 0 0 var(--shadow-color)',
-          }}
-        >
-          <div className="font-pixel" style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 24, fontWeight: 700 }}>Clubs & Community</div>
-          {clubs.map((c, i) => (
-            <div key={c.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0', borderBottom: i === clubs.length - 1 ? 'none' : '3px solid var(--border)' }}>
-              <div>
-                <div className="font-body" style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--foreground)' }}>{c.name}</div>
-                <div className="font-pixel" style={{ fontSize: 8, color: 'var(--muted-foreground)', letterSpacing: '0.1em', marginTop: 4 }}>{c.university}</div>
-              </div>
-              <span
-                className="font-pixel"
+          {/* Leadership & Clubs Card */}
+          <div
+            style={{
+              background: '#0d1428',
+              padding: 'clamp(28px, 4vw, 36px)',
+              borderRadius: 16,
+              border: '1px solid rgba(242, 241, 236, 0.08)',
+              transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(255, 106, 43, 0.38)';
+              e.currentTarget.style.boxShadow = '0 0 28px rgba(255, 106, 43, 0.12)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(242, 241, 236, 0.08)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <div style={{ fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ff6a2b', marginBottom: 20, fontWeight: 600 }}>
+              Campus Chapters &amp; Community
+            </div>
+            {clubs.map((cl, i) => (
+              <div
+                key={cl.name}
                 style={{
-                  fontSize: 8,
-                  border: '2px solid var(--border)',
-                  background: 'var(--accent)',
-                  color: 'var(--accent-foreground)',
-                  padding: '3px 8px',
-                  boxShadow: '2px 2px 0 0 var(--shadow-color)',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '16px 0',
+                  borderBottom: i === clubs.length - 1 ? 'none' : '1px solid rgba(242, 241, 236, 0.06)',
                 }}
               >
-                {c.badge}
-              </span>
-            </div>
-          ))}
+                <div>
+                  <div style={{ fontSize: '0.98rem', fontWeight: 500, color: '#f2f1ec' }}>{cl.name}</div>
+                  <div style={{ fontSize: 12, color: '#9aa3b8', marginTop: 3 }}>{cl.university}</div>
+                </div>
+                <span
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    border: '1px solid rgba(242, 241, 236, 0.1)',
+                    background: 'rgba(10, 15, 31, 0.6)',
+                    color: '#9aa3b8',
+                    padding: '3px 9px',
+                    borderRadius: 9999,
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {cl.badge}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
