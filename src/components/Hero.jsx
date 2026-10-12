@@ -35,7 +35,7 @@ const Hero = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Background Photo & Dark Gradient Overlays */}
+      {/* Background Photo */}
       <div
         style={{
           position: 'absolute',
@@ -53,25 +53,6 @@ const Hero = () => {
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
-            opacity: 0.65,
-          }}
-        />
-        {/* Vertical fade to blend with page theme */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to bottom, rgba(10, 15, 31, 0.8) 0%, rgba(10, 15, 31, 0.35) 50%, rgba(10, 15, 31, 1) 100%)',
-          }}
-        />
-        {/* Radial vignette for optimal typography contrast */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse at center, rgba(10, 15, 31, 0.25) 0%, rgba(10, 15, 31, 0.75) 100%)',
           }}
         />
       </div>
