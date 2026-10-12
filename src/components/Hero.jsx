@@ -32,9 +32,51 @@ const Hero = () => {
         padding: '100px clamp(20px, 6vw, 80px) 60px',
         position: 'relative',
         textAlign: 'center',
+        overflow: 'hidden',
       }}
     >
-      <div style={{ maxWidth: 840, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {/* Background Photo & Dark Gradient Overlays */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        <img
+          src="/hero-bg.jpg"
+          alt="Twilight lake background"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            opacity: 0.65,
+          }}
+        />
+        {/* Vertical fade to blend with page theme */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, rgba(10, 15, 31, 0.8) 0%, rgba(10, 15, 31, 0.35) 50%, rgba(10, 15, 31, 1) 100%)',
+          }}
+        />
+        {/* Radial vignette for optimal typography contrast */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'radial-gradient(ellipse at center, rgba(10, 15, 31, 0.25) 0%, rgba(10, 15, 31, 0.75) 100%)',
+          }}
+        />
+      </div>
+
+      <div style={{ maxWidth: 840, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
         {/* Name */}
         <h1
           className="font-serif"
@@ -155,6 +197,7 @@ const Hero = () => {
           color: '#9aa3b8',
           textDecoration: 'none',
           transition: 'color 0.2s ease',
+          zIndex: 1,
         }}
         onMouseEnter={e => { e.currentTarget.style.color = '#ff6a2b'; }}
         onMouseLeave={e => { e.currentTarget.style.color = '#9aa3b8'; }}
