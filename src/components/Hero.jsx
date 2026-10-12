@@ -46,7 +46,7 @@ const Hero = () => {
         }}
       >
         <img
-          src="/hero-bg.jpg"
+          src="/hero-bg.jpg?v=2"
           alt="Twilight lake background"
           style={{
             width: '100%',
